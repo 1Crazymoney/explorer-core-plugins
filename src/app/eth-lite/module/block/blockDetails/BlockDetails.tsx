@@ -50,10 +50,6 @@ export class BlockDetails extends React.PureComponent<IBlockDetailsProps> {
                         : null }
                         { slots[BlockDetailsSlotType.Confirmations] }
                     </LayoutRowItem>
-                    <LayoutRowItem>
-                        <Label>{tr.get("blockView.content.uncles.label")}</Label>
-                        <UnclesCountBox locale={locale}>{block.uncles.length}</UnclesCountBox>
-                    </LayoutRowItem>
                 </LayoutRow>
                 <LayoutRow minWidth={760}>
                     <LayoutRowItem>
@@ -72,20 +68,6 @@ export class BlockDetails extends React.PureComponent<IBlockDetailsProps> {
                         </ParentHashBox>
                     </LayoutRowItem> : null }
                 </LayoutRow>
-                { block.uncles.length ?
-                <LayoutRow>
-                    <LayoutRowItem fullRow>
-                        <Label>{tr.get("blockView.content.uncles.label")}</Label>
-                        {block.uncles.map((uncleHash, idx) => (
-                            <UncleHashBox key={uncleHash}
-                                linkTo={`page://aleth.io/uncle?blockNumber=${block.id}&uncleIndex=${idx}`}
-                            >
-                                {uncleHash}
-                            </UncleHashBox>
-                        ))}
-                    </LayoutRowItem>
-                </LayoutRow>
-                : null }
                 { block.nonce ?
                 <LayoutRow minWidth={710}>
                     <LayoutRowItem>
@@ -111,12 +93,6 @@ export class BlockDetails extends React.PureComponent<IBlockDetailsProps> {
                     </LayoutRowItem>
                     : null }
                 </LayoutRow>
-                <LayoutRow>
-                    <LayoutRowItem fullRow>
-                        <Label>{tr.get("blockView.content.beneficiary.label")}</Label>
-                        <AddressHashBox>{block.beneficiaryAddress}</AddressHashBox>
-                    </LayoutRowItem>
-                </LayoutRow>
                 <LayoutRow minWidth={760}>
                     <LayoutRowItem>
                         <Label>{tr.get("general.gasLimit")}</Label>
@@ -125,12 +101,6 @@ export class BlockDetails extends React.PureComponent<IBlockDetailsProps> {
                     <LayoutRowItem>
                         <Label>{tr.get("general.gasUsed")}</Label>
                         <GasUsedValueBox value={block.gasUsed} limit={block.gasLimit} locale={locale} />
-                    </LayoutRowItem>
-                </LayoutRow>
-                <LayoutRow>
-                    <LayoutRowItem>
-                        <Label>{tr.get("blockView.content.difficulty.label")}</Label>
-                        <DifficultyBox value={block.difficulty} locale={locale} />
                     </LayoutRowItem>
                 </LayoutRow>
                 { slots && slots[BlockDetailsSlotType.ExtraData] ||

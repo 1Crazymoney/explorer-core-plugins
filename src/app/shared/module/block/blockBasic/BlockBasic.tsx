@@ -48,10 +48,6 @@ export class BlockBasic extends React.PureComponent<IBlockBasicProps> {
                     : null }
                     { slots[BlockBasicSlotType.Confirmations] }
                 </LayoutRowItem>
-                <LayoutRowItem>
-                    <Label>{tr.get("blockView.content.uncles.label")}</Label>
-                    <UnclesCountBox locale={locale}>{block.uncles.length}</UnclesCountBox>
-                </LayoutRowItem>
             </LayoutRow>
             <LayoutRow minWidth={760}>
                 <LayoutRowItem>
@@ -77,18 +73,6 @@ export class BlockBasic extends React.PureComponent<IBlockBasicProps> {
                     </ParentHashBox>
                 </LayoutRowItem> : null }
             </LayoutRow>
-            { block.uncles.length ?
-            <LayoutRow>
-                <LayoutRowItem fullRow>
-                    <Label>{tr.get("blockView.content.uncles.label")}</Label>
-                    {block.uncles.map(uncleHash => (
-                        <UncleHashBox key={uncleHash} linkTo={`page://aleth.io/uncle?uncleHash=${uncleHash}`}>
-                            {uncleHash}
-                        </UncleHashBox>
-                    ))}
-                </LayoutRowItem>
-            </LayoutRow>
-            : null }
             <LayoutRow minWidth={710}>
                 <LayoutRowItem>
                     <Label>{tr.get("general.nonce")}</Label>

@@ -37,10 +37,6 @@ export class LatestBlockInfo extends React.Component<ILatestBlockInfoProps> {
                     <Label>{tr.get("blockView.content.transactions.label")}</Label>
                     <TxCountBox>{ this.props.lastBlock.transactions.length }</TxCountBox>
                 </LayoutRowItem>
-                <LayoutRowItem>
-                    <Label>{tr.get("blockView.content.uncles.label")}</Label>
-                    <UnclesCountBox locale={locale}>{this.props.lastBlock.uncleCount}</UnclesCountBox>
-                </LayoutRowItem>
             </div>
         );
     }

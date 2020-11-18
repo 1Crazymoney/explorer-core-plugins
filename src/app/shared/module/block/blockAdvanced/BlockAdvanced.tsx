@@ -58,29 +58,6 @@ export class BlockAdvanced extends React.PureComponent<IBlockAdvancedProps> {
                 : null }
             </LayoutRow>
             : null }
-            { block.beneficiaryAddress ?
-            <LayoutRow>
-                <LayoutRowItem fullRow>
-                    <Label>{tr.get("blockView.content.beneficiary.label")}</Label>
-                    <AddressHashBox>{block.beneficiaryAddress}</AddressHashBox>
-                    { block.beneficiaryName ?
-                    <Link to={`page://aleth.io/account?accountHash=${block.beneficiaryAddress!}`}>
-                        <MinerLabelBox>{block.beneficiaryName}</MinerLabelBox>
-                    </Link>
-                    : null }
-                    { block.mineTime ?
-                    <TimeInPoolBox seconds={block.mineTime} colors="secondary"
-                        translation={tr.get("blockView.content.beneficiary.mineTime")} />
-                    : null }
-                    { block.beneficiaryReward ?
-                    <>
-                    <Label arrow>{tr.get("blockView.content.beneficiary.reward.label")}</Label>
-                    <EthValueBox wei={block.beneficiaryReward} locale={locale} symbol={ethSymbol} />
-                    </>
-                    : null }
-                </LayoutRowItem>
-            </LayoutRow>
-            : null }
             <LayoutRow minWidth={760}>
                 <LayoutRowItem>
                     <Label>{tr.get("general.gasLimit")}</Label>
@@ -89,12 +66,6 @@ export class BlockAdvanced extends React.PureComponent<IBlockAdvancedProps> {
                 <LayoutRowItem>
                     <Label>{tr.get("general.gasUsed")}</Label>
                     <GasUsedValueBox value={block.gasUsed} limit={block.gasLimit} locale={locale} />
-                </LayoutRowItem>
-            </LayoutRow>
-            <LayoutRow>
-                <LayoutRowItem>
-                    <Label>{tr.get("blockView.content.difficulty.label")}</Label>
-                    <DifficultyBox value={block.difficulty} locale={locale} />
                 </LayoutRowItem>
             </LayoutRow>
             { slots && slots[BlockAdvancedSlotType.ExtraData] ||

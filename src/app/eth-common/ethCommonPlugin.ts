@@ -11,9 +11,7 @@ import { txListModule } from "./module/tx/txList/txListModule";
 import { accountPage } from "./page/account/accountPage";
 import { identiconModule as accountIdenticonModule } from "./module/account/identicon/accountIdenticonModule";
 import { toolbarSearchModule } from "./module/search/toolbarSearchModule";
-import { toolbarFeedbackModule } from "./module/toolbar/feedback/toolbarFeedbackModule";
 import { topbarSearchModule } from "./module/search/topbarSearchModule";
-import { topbarFeedbackModule } from "./module/toolbar/feedback/topbarFeedbackModule";
 import { SearchInlineStore } from "./module/search/SearchInlineStore";
 import { privacyPolicyPage } from "./page/privacy-policy/privacyPolicyPage";
 import { latestBlockRangeContext } from "./context/latestBlockRangeContext";
@@ -72,8 +70,8 @@ const ethCommonPlugin: IPlugin = {
         api.addModuleDef("module://aleth.io/toolbar/company", toolbarAlethioCompanyModule(config.companyUrl));
         api.addModuleDef("module://aleth.io/topbar/company", topbarAlethioCompanyModule(config.companyUrl));
 
-        api.addModuleDef("module://aleth.io/toolbar/feedback", toolbarFeedbackModule);
-        api.addModuleDef("module://aleth.io/topbar/feedback", topbarFeedbackModule);
+        // api.addModuleDef("module://aleth.io/toolbar/feedback", toolbarFeedbackModule);
+        // api.addModuleDef("module://aleth.io/topbar/feedback", topbarFeedbackModule);
 
         let searchInlineStore = new SearchInlineStore();
         api.addModuleDef("module://aleth.io/search", searchModule(searchInlineStore));

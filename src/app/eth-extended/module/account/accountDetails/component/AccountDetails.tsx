@@ -78,25 +78,6 @@ export class AccountDetails extends React.PureComponent<IAccountDetailsProps> {
                     <AccountAliasBox>{ account.alias }</AccountAliasBox>
                 </LayoutRowItem>
                 : null }
-                { /**
-                   * The two conditions below are to hide mined block and mined uncles
-                   * because database inconsistency.
-                   * TODO: Remove the conditions when the problem is fixed in db
-                   */ }
-                { false ?
-                <LayoutRowItem>
-                    <Label>{tr.get("accountView.content.minedBlocks.label")}</Label>
-                    <AccountMinedBlocksBox locale={locale}>
-                        { account.countMinedBlocks }
-                    </AccountMinedBlocksBox>
-                </LayoutRowItem>
-                : null }
-                { false ?
-                <LayoutRowItem>
-                    <Label>{tr.get("accountView.content.uncles.label")}</Label>
-                    <UnclesCountBox locale={locale}>{ account.countMinedUncles }</UnclesCountBox>
-                </LayoutRowItem>
-                : null }
                 { account.nonce !== void 0 ?
                 <LayoutRowItem>
                     <Label>{tr.get("general.nonce")}</Label>

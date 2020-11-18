@@ -79,37 +79,10 @@ export class UncleDetails extends React.PureComponent<IUncleDetailsProps> {
                 </LayoutRowItem>
             </LayoutRow>
             : null }
-            { uncle.beneficiaryAddress ?
-            <LayoutRow>
-                <LayoutRowItem fullRow>
-                    <Label>{tr.get("blockView.content.beneficiary.label")}</Label>
-                    <AddressHashBox>{uncle.beneficiaryAddress}</AddressHashBox>
-                    { (uncle as IUncleDetailsExtended).beneficiaryName ?
-                    <Link to={`page://aleth.io/account?accountHash=${uncle.beneficiaryAddress}`}>
-                        <MinerLabelBox>{(uncle as IUncleDetailsExtended).beneficiaryName}</MinerLabelBox>
-                    </Link>
-                    : null }
-                    { uncleReward ?
-                    <>
-                    <Label arrow>{tr.get("blockView.content.beneficiary.reward.label")}</Label>
-                    <EthValueBox wei={uncleReward} locale={locale}
-                        symbol={ethSymbol} />
-                    </>
-                    : null }
-                </LayoutRowItem>
-            </LayoutRow>
-            : null }
             <LayoutRow>
                 <LayoutRowItem>
                     <Label>{tr.get("general.gasLimit")}</Label>
                     <NumberBox value={uncle.gasLimit} locale={locale} />
-                </LayoutRowItem>
-            </LayoutRow>
-            <LayoutRow>
-                <LayoutRowItem>
-                    <Label>{tr.get("blockView.content.difficulty.label")}</Label>
-                    <DifficultyBox
-                        value={uncle.difficulty} locale={locale} />
                 </LayoutRowItem>
             </LayoutRow>
             { uncle.extraData ?
